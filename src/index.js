@@ -1,61 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Button} from "react-bootstrap";
+import {projectActions} from "./action/project.action";
 
+import AppHeader from "./component/app-header";
+import List from "./component/List";
+import './style.css'
+import axiosInstance from "./config/AxiosConfig";
 
-class Project extends React.Component {
-    render() {
-        return (
-            <tr>
-                <td>{this.props.project.id}</td>
-                <td>{this.props.project.name}</td>
-                <td>{this.props.project.description}</td>
-                <td>{this.props.project.status}</td>
-            </tr>
-        )
-    }
-}
+const App = () => {
 
-class ProjectList extends React.Component {
+    const todoData = [
+        {label: 'asdxx', important: false, id: 1},
+        {label: 'QWE', important: true, id: 2},
+        {label: 'PPO', important: false, id: 3}
+        ];
 
-    render() {
-        const projects = this.props.projects.map(project =>
-            <Project key={project._links.self.href} project={project}/>
-        );
-        return (
-            <table>
-                <tbody>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Description</th>
-                </tr>
-                {projects}
-                </tbody>
-            </table>
-        )
-    }
+    const userId = '58607299-b756-4f72-922d-07e3c9f1448d';
 
-}
+    return (
+        <div>
+            <AppHeader/>
+            <div id="ProjectList">
+                <List/>
+            </div>
+            <Button>
 
-class App extends React.Component {
+            </Button>
+        </div>
+    );
+};
 
-    constructor(props) {
-        super(props);
-        this.state = {projects: []};
-    }
+// const el = React.createElement('h1', null, 'HELLO WORLD');
 
-    componentDidMount() {
-        client({method: 'GET', path: '/api/project/findAll'}).done(response => {
-            this.setState({projects: response.entity._embedded.employees});
-        });
-    }
-
-    render() {
-        return (
-            <ProjectList projects={this.state.projects}/>
-        )
-    }
-
-}
-
-
+ReactDOM.render(<App/>, document.getElementById('root'));
