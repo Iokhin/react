@@ -1,3 +1,11 @@
 #ProjectList {
     margin: 20px;
 }
+
+#projectDetails {
+    margin: 20px;
+}
+
+a {
+    text-decoration: none;
+}

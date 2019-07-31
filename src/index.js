@@ -1,36 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from "react-bootstrap";
-import {projectActions} from "./action/project.action";
+import { MemoryRouter as Router, Route, Link } from 'react-router-dom';
 
 import AppHeader from "./component/app-header";
-import List from "./component/List";
+import Login from "./component/login-form/Login";
+import ProjectList from "./component/project-list/ProjectList";
+import ProjectListItem from "./component/project-list-item/ProjectListItem";
 import './style.css'
-import axiosInstance from "./config/AxiosConfig";
 
 const App = () => {
 
-    const todoData = [
-        {label: 'asdxx', important: false, id: 1},
-        {label: 'QWE', important: true, id: 2},
-        {label: 'PPO', important: false, id: 3}
-        ];
-
-    const userId = '58607299-b756-4f72-922d-07e3c9f1448d';
-
     return (
-        <div>
+        <Router>
             <AppHeader/>
-            <div id="ProjectList">
-                <List/>
-            </div>
-            <Button>
-
-            </Button>
-        </div>
+            <Route path="/login" component={Login}/>
+            <Route path="/projects" exact component={ProjectList}/>
+            <Route path="/projects/:id" component={ProjectListItem}/>
+        </Router>
     );
 };
-
-// const el = React.createElement('h1', null, 'HELLO WORLD');
 
 ReactDOM.render(<App/>, document.getElementById('root'));
