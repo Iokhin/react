@@ -31,8 +31,8 @@ export default class Login extends React.Component {
                 username: this.state.login,
                 password: this.state.password
             }).then(res => this.setLocalStorage(res));
-            this.props.history.push('/projects');
-            // window.location.reload();
+            // this.props.history.push('/');
+            window.location.reload();
         } catch (e) {
             alert(e.message);
         }

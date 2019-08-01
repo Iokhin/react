@@ -2,7 +2,7 @@ import React from "react";
 import logo from './tm-symbol.jpg';
 import {Nav} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import LogInOutLink from "../fragment/user/LogInOutLink/LogInOutLink";
+import LogInOut from "../fragment/user/LogInOutLink/LogInOut";
 
 export default class AppHeader extends React.Component {
 
@@ -10,17 +10,13 @@ export default class AppHeader extends React.Component {
         super(props, context);
     }
 
-    static logout() {
-        console.log('asd')
-    };
-
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="#"><img src={logo} width="40" height="40"/></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"/>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav mr-auto nav-tabs">
@@ -34,12 +30,12 @@ export default class AppHeader extends React.Component {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Tasks</a>
+                            <Link className="nav-link" to="/tasks">Tasks</Link>
                         </li>
                     </ul>
-                    <LogInOutLink/>
+                    <LogInOut/>
                     <span className="nav-item">
-                    <a className="nav-link" href="#">Register</a>
+                    <Link className="nav-link" to="/register">Register</Link>
                   </span>
                 </div>
             </nav>
