@@ -6,10 +6,26 @@
     margin: 20px;
 }
 
+#reg-form {
+    margin-top: 8%;
+    background: #ffdbd6;
+    padding: 2%;
+    border-radius: 50%;
+}
+
+#login-form {
+    margin-top: 8%;
+    padding: 2%;
+}
+
 a {
     text-decoration: none;
 }
 
 .option-btn {
     text-align: center;
+}
+
+#welcome {
+    margin-top: 5%;
 }

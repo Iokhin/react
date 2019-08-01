@@ -36,7 +36,7 @@ export default class Register extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container id="reg-form">
                 <Row className="justify-content-md-center">
                     <Col xs={4}>
                         <Form onSubmit={this.handleSubmit}>
@@ -64,7 +64,7 @@ export default class Register extends React.Component {
                                     <Form.Control type="password" required={true}
                                                   name="password"
                                                   value={ this.state.password }
-                                                  onChange={ e => this.handleChange(e) }/>
+                                                  onChange={ this.handleChange }/>
                                 </Col>
                             </Form.Group>
                             <div className="d-flex justify-content-center">

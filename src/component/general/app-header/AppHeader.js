@@ -2,7 +2,7 @@ import React from "react";
 import logo from './tm-symbol.jpg';
 import {Nav} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import LogInOut from "../fragment/user/LogInOutLink/LogInOut";
+import LogInOut from "../../user/log-in-out/LogInOut";
 
 export default class AppHeader extends React.Component {
 
@@ -12,8 +12,8 @@ export default class AppHeader extends React.Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#"><img src={logo} width="40" height="40"/></a>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light color">
+                <Link className="navbar-brand" to="/"><img src={logo} width="40" height="40"/></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"/>
