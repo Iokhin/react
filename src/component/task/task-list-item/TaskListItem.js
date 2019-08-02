@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Form, Col, Row, Container } from 'react-bootstrap';
 import axios from 'axios';
 
-function ProjectListItem({match}) {
+function TaskListItem({match}) {
 
     useEffect(() => {
         fetchItem();
         console.log(match);
-    }, {});
+    }, {})
 
     const [item, setItem] = useState({});
 
     const fetchItem = async () => {
-        const fetchItem = await axios.get(`api/project/findOne?id=${match.params.id}`,
+        const fetchItem = await axios.get(`api/task/findOne?id=${match.params.id}`,
             {headers: {'Authorization': localStorage.getItem('token')}})
             .then(res => {
                 setItem(res.data);
@@ -22,10 +22,10 @@ function ProjectListItem({match}) {
 
     return (
         <Container>
-            <div id="projectDetails">
+            <div id="taskDetails">
                 <Form>
                     <div className="d-flex justify-content-center">
-                        <h3 className="form-signin-heading">PROJECT DETAILS</h3>
+                        <h3 className="form-signin-heading">TASK DETAILS</h3>
                     </div>
                     <hr/>
                     <Form.Group as={Row} controlId="formPlaintextId">
@@ -69,4 +69,4 @@ function ProjectListItem({match}) {
     );
 }
 
-export default ProjectListItem;
+export default TaskListItem;

@@ -20,18 +20,26 @@ export default class AppHeader extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav mr-auto nav-tabs">
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Profile<span
-                                className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/projects" className="nav-link">
-                                 Projects
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/tasks">Tasks</Link>
-                        </li>
+                        {localStorage.getItem('token') &&
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/profile">Profile<span
+                                    className="sr-only">(current)</span></Link>
+                            </li>
+                        }
+                        {localStorage.getItem('token') &&
+                            <li className="nav-item">
+                                <Link to="/projects" className="nav-link">
+                                     Projects
+                                </Link>
+                            </li>
+                        }
+                        {localStorage.getItem('token') &&
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/tasks">
+                                    Tasks
+                                </Link>
+                            </li>
+                        }
                     </ul>
                     <LogInOut/>
                     <span className="nav-item">

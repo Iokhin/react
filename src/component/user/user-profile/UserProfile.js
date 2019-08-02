@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Form, Col, Row, Container } from 'react-bootstrap';
 import axios from 'axios';
 
-function ProjectListItem({match}) {
+function UserProfile() {
 
     useEffect(() => {
         fetchItem();
-        console.log(match);
     }, {});
 
     const [item, setItem] = useState({});
 
     const fetchItem = async () => {
-        const fetchItem = await axios.get(`api/project/findOne?id=${match.params.id}`,
+        const fetchItem = await axios.get(`api/user/findOne?id=${localStorage.getItem('userId')}`,
             {headers: {'Authorization': localStorage.getItem('token')}})
             .then(res => {
                 setItem(res.data);
@@ -20,12 +19,12 @@ function ProjectListItem({match}) {
             });
     };
 
-    return (
+    return(
         <Container>
-            <div id="projectDetails">
+            <div id="userDetails">
                 <Form>
                     <div className="d-flex justify-content-center">
-                        <h3 className="form-signin-heading">PROJECT DETAILS</h3>
+                        <h3 className="form-signin-heading">PROFILE</h3>
                     </div>
                     <hr/>
                     <Form.Group as={Row} controlId="formPlaintextId">
@@ -37,36 +36,28 @@ function ProjectListItem({match}) {
                         </Col>
                     </Form.Group>
 
-                    <Form.Group as={Row} controlId="formPlaintextName">
+                    <Form.Group as={Row} controlId="formPlaintextUsername">
                         <Form.Label column sm="2">
-                            Name
+                            Username
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" readOnly value={item.name}/>
+                            <Form.Control readOnly type="text" value={item.login}/>
                         </Col>
                     </Form.Group>
 
-                    <Form.Group as={Row} controlId="formPlaintextDescription">
+                    <Form.Group as={Row} controlId="formPlaintextEmail">
                         <Form.Label column sm="2">
                             Description
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" readOnly value={item.description}/>
-                        </Col>
-                    </Form.Group>
-
-                    <Form.Group as={Row} controlId="formPlaintextUserId">
-                        <Form.Label column sm="2">
-                            User ID
-                        </Form.Label>
-                        <Col sm="10">
-                            <Form.Control type="text" readOnly value={item.userId}/>
+                            <Form.Control readOnly type="text" value={item.email}/>
                         </Col>
                     </Form.Group>
                 </Form>
             </div>
         </Container>
     );
+
 }
 
-export default ProjectListItem;
+export default UserProfile;

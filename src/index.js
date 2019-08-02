@@ -8,9 +8,11 @@ import ProjectList from "./component/project/project-list/ProjectList";
 import ProjectListItem from "./component/project/project-list-item/ProjectListItem";
 import TaskList from "./component/task/task-list/TaskList";
 import Register from "./component/user/registration-form/Register";
+import UserProfile from "./component/user/user-profile/UserProfile";
 
 import './style.css'
 import Welcome from "./component/general/welcome/Welcome";
+import TaskListItem from "./component/task/task-list-item/TaskListItem";
 
 const App = () => {
 
@@ -23,6 +25,8 @@ const App = () => {
             <Route path="/projects" exact component={ ProjectList }/>
             <Route path="/projects/:id" component={ ProjectListItem }/>
             <Route path="/tasks" exact component={ TaskList }/>
+            <Route path="/tasks/:id" component={ TaskListItem }/>
+            <Route path="/profile" exact component={ UserProfile }/>
         </Router>
     );
 };
